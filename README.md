@@ -1,6 +1,4 @@
 ﻿
-# 天宝PC v2 mobile 开发指南
-html链接: https://www.zybuluo.com/100608706/note/1168133
 -------
 ### 技术选型
 > 1. 基础框架：react
