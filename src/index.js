@@ -1,5 +1,6 @@
 import dva from 'dva';
 import './index.css';
+import './assets/css/reset.less';
 // user BrowserHistory
 import createHistory from 'history/createBrowserHistory';
 
@@ -8,10 +9,7 @@ import createHistory from 'history/createBrowserHistory';
 const app = dva({
   history: createHistory(),
   // 此处优先级低于redux state
-  initialState: {
-    locale: 'fr',
-    currency: 'CAD'
-  }
+  initialState: {}
 });
 
 // 2. Plugins

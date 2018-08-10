@@ -8,7 +8,7 @@ const AsyncIndex = Loadable({
   loading () {
     return <div>loading....</div>
   },
-  loader: () => import('./components/Example')
+  loader: () => import('./routes/homePage')
 })
 
 function RouterConfig({ history, app }) {

@@ -1,12 +1,15 @@
-import { routerRedux } from 'dva/router';
-
 export default {
 
   namespace: 'app',
 
   state: {
     locale: 'en',
-    currency: 'CAD'
+    currency: 'CAD',
+    ipInfo: {},
+    fromCityAirport: {},
+    toCityAirport: {},
+    departDate: '',
+    returnDate: ''
   },
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
@@ -24,6 +27,8 @@ export default {
           break;
           case '/complete':
           console.log('complete page... do something here', history.location)
+          break;
+          default:
           break;
         }
       })

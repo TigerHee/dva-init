@@ -1,0 +1,242 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+  font-size: 16/375vw;
+  font: inherit;
+	vertical-align: baseline;
+}
+html{
+  height: 100%;
+  width: 100%;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+  height: 100%;
+  width: 100%;
+  background: #f6f6f8;
+  line-height: 1;
+  font-family: 'Helvetica Neue', 'avenir next';
+  overflow: hidden;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a{
+  text-decoration: none;
+}
+
+.tb-calendar{
+  .content {
+    height: calc(100% - 10.125rem);
+    top: 10.125rem;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    z-index: 999;
+    background: #fff;
+  }
+  .animate{
+    animation-duration: .3s;
+    animation-fill-mode: both;
+  }
+  .header{
+    margin: 5px;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    .left{
+      position: absolute;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -ms-flex-align: center;
+      align-items: center;
+      padding: 0 8px;
+      height: 24px;
+      left: 5px;
+      top: 5px;
+      color: #068EEF;
+    }
+    .title{
+      text-align: center;
+      width: 100%;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+  .date-picker{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background: #eee;
+    .wrapper{
+      height: auto;
+      position: relative;
+    }
+    .load-tip{
+      position: absolute;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -ms-flex-align: end;
+      align-items: flex-end;
+      left: 0;
+      right: 0;
+      padding: 10px 0;
+      top: -40px;
+      color: #bbb;
+    }
+    .months{
+      background: #fff;
+    }
+  }
+  .week-panel{
+    background: #fff;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    padding: 0 2px;
+    border-bottom: 1PX #ddd solid;
+    .cell-grey{
+      color: #bbb;
+    }
+    .cell{
+      height: 24px;
+      display: -ms-flexbox;
+      display: flex;
+      width: 14.28571429%;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -ms-flex-align: center;
+      align-items: center;
+      color: #000;
+      font-size: 14px;
+    }
+  }
+  .single-month{
+    padding: 0;
+    .month-title{
+      margin: 0;
+      padding: 21px 0 6px 15px;
+    }
+    .row{
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: baseline;
+      align-items: baseline;
+      & + .row{
+        margin-top: 6px;
+      }
+      .cell{
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        width: 14.28571429%;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -ms-flex-align: center;
+        align-items: center;
+        .date-selected{
+          color: #FFA900;
+        }
+        .date-warpper{
+          display: -ms-flexbox;
+          display: flex;
+          height: 35px;
+          width: 100%;
+          -ms-flex-pack: center;
+          justify-content: center;
+          -ms-flex-align: center;
+          align-items: center;
+          margin-bottom: 2px;
+          .left, .right{
+            border: none;
+            width: 100%;
+            height: 35px;
+          }
+          .grey{
+            color: #bbb;
+          }
+          .date{
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -ms-flex-align: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            color: #000;
+            font-size: 17px;
+            font-weight: bold;
+          }
+          .selected-start{
+            border-radius: 100% 0 0 100%;
+          }
+          .selected-middle{
+            border-radius: 0;
+          }
+          .selected-end{
+            border-radius: 0 100% 100% 0;
+          }
+          .date-selected{
+            border: none;
+            background: #FFA900;
+            color: #fff;
+            font-size: 17px;
+          }
+        }
+        .info{
+          height: 15px;
+          width: 100%;
+          padding: 0 5px;
+          font-size: 10px;
+          color: #888;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

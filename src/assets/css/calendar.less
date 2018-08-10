@@ -1,0 +1,614 @@
+@prefixClass: tb-calendar;
+@h-spacing-md: 8px;
+@h-spacing-lg: 15px;
+@radius-md: 5px;
+@button-font-size: 18px;
+@brand-primary: #108ee9;
+@primary-button-fill: #108ee9;
+@color-text-disabled: #bbb;
+@fill-disabled: #ddd;
+@v-spacing-xs: 3px;
+@v-spacing-sm: 6px;
+@v-spacing-md: 9px;
+@v-spacing-lg: 15px;
+@v-spacing-xl: 21px;
+@font-size-heading: 17px;
+@font-size-icontext: 10px;
+@color-text-caption: #888;
+@option-height: 42px;
+// Animation
+:global(.@{prefixClass}) {
+  :global(.animate) {
+    animation-duration: .3s;
+    animation-fill-mode: both;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+
+  :global(.fade-enter) {
+    animation-name: fadeIn;
+  }
+
+  :global(.fade-leave) {
+    animation-name: fadeOut;
+  }
+  @keyframes slideInUp {
+    0% {
+      transform: translate3d(0, 100%, 0);
+      visibility: visible;
+    }
+
+    to {
+      transform: translateZ(0);
+    }
+  }
+  @keyframes slideInDown {
+    0% {
+      transform: translateZ(0);
+      visibility: visible;
+    }
+
+    to {
+      transform: translate3d(0, 100%, 0);
+    }
+  }
+  @keyframes slideInLeft {
+    0% {
+      transform: translate3d(100%, 0, 0);
+      visibility: visible;
+    }
+
+    to {
+      transform: translateZ(0);
+    }
+  }
+  @keyframes slideInRight {
+    0% {
+      transform: translateZ(0);
+      visibility: visible;
+    }
+
+    to {
+      transform: translate3d(100%, 0, 0);
+    }
+  }
+
+  :global(.slideV-enter) {
+    animation-name: slideInUp;
+  }
+
+  :global(.slideV-leave) {
+    animation-name: slideInDown;
+  }
+
+  :global(.slideH-enter) {
+    animation-name: slideInLeft;
+  }
+
+  :global(.slideH-leave) {
+    animation-name: slideInRight;
+  }
+}
+
+// Calendar
+:global(.@{prefixClass}) {
+  :global(.mask) {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    // background: rgba(0, 0, 0, .5);
+  }
+
+  :global(.content) {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    top: 3rem;
+    left: 0;
+    z-index: 999;
+    background: #fff;
+  }
+
+  :global(.header) {
+    margin: 5 * 1px;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+
+    :global(.title) {
+      text-align: center;
+      width: 100%;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    :global(.left) {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 8 * 1px;
+      height: 24 * 1px;
+      left: 5 * 1px;
+      top: 5 * 1px;
+      color: #068EEF;
+    }
+
+    :global(.right) {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 8 * 1px;
+      height: 24 * 1px;
+      right: 5 * 1px;
+      top: 5 * 1px;
+      color: #068EEF;
+      font-size: 14 * 1px;
+    }
+  }
+
+  :global(.timePicker) {
+    border-top: 1PX #ccc solid;
+  }
+}
+
+// WeekPanel
+:global(.@{prefixClass}) :global(.week-panel) {
+  background: #fff;
+  display: flex;
+  flex-shrink: 0;
+  padding: 0 2 * 1px;
+  font-size: 14px;
+  color: #363F54;
+  // border-bottom: 1px #ddd solid;
+
+  :global(.cell) {
+    height: 24 * 1px;
+    display: flex;
+    width: 100/7%;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    font-size: 14px;
+  }
+
+  :global(.cell-grey) {
+    color: #bbb;
+  }
+}
+
+// DatePicker
+:global(.@{prefixClass}) :global(.date-picker) {
+  display: flex;
+  flex-direction: column;
+  background: #eee;
+
+  :global(.wrapper) {
+    height: auto;
+    position: relative;
+  }
+
+  :global(.months) {
+    background: #fff;
+  }
+
+  :global(.load-tip) {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    left: 0;
+    right: 0;
+    padding: 10 * 1px 0;
+    top: -40 * 1px;
+    color: #bbb;
+  }
+}
+
+// ConfirmPanel
+:global(.@{prefixClass}) :global(.confirm-panel) {
+  display: none;
+  // display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  background: #f7f7f7;
+  padding: @h-spacing-md @h-spacing-lg;
+  border-top: #ddd 1px solid;
+
+  :global(.info) {
+    font-size: 12px-sm;
+
+    :global(p) {
+      margin: 0;
+    }
+
+    :global(p) + :global(p) {
+      margin-top: @h-spacing-md;
+    }
+
+    :global(.grey) {
+      color: #bbb;
+    }
+  }
+
+  // .button {
+  //   text-align: center;
+  //   width: 80 * 1px;
+  //   margin: 0 0 0 auto;
+  //   padding: @h-spacing-md 0;
+  //   border-radius: @radius-md;
+  //   color: #000-inverse;
+  //   font-size: @button-font-size;
+  //   background: @brand-primary;
+  //   background: @primary-button-fill;
+  // }
+
+  // .button-disable {
+  //   color: @color-text-disabled;
+  //   background: @fill-disabled;
+  // }
+
+  // .button-full {
+  //   width: 100%;
+  //   text-align: center;
+  // }
+}
+
+// TimePicker
+:global(.@{prefixClass}) :global(.time-picker) {
+  flex-shrink: 0;
+  text-align: center;
+  background: #fff;
+
+  :global(.title) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 44 * 1px;
+    font-size: 12px;
+    border-top: 1px #ddd solid;
+    border-bottom: 1px #ddd solid;
+  }
+}
+
+// SingleMonth
+:global(.@{prefixClass}) :global(.single-month) {
+  padding: 0;
+
+  :global(.month-title) {
+    margin: 0;
+    padding: @v-spacing-xl 0 @v-spacing-sm @h-spacing-lg;
+    text-align: center;
+  }
+
+  :global(.row) {
+    display: flex;
+    align-items: baseline;
+    @cell-size: 35 * 1px;
+
+    :global(.cell) {
+      display: flex;
+      flex-direction: column;
+      width: 100/7%;
+      justify-content: center;
+      align-items: center;
+
+      :global(.date-wrapper) {
+        display: flex;
+        height: @cell-size;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2 * 1px;
+
+        :global(.date) {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: @cell-size;
+          height: @cell-size;
+          flex-shrink: 0;
+          color: #363F54;
+          font-size: 18px;
+          // font-weight: bold;
+        }
+
+        :global(.disable) {
+          color: #CCCCCC;
+          // background: #eee;
+          border: none;
+          border-radius: 100%;
+        }
+
+        :global(.grey) {
+          // color: #bbb;
+        }
+
+        :global(.important) {
+          border: 1px #ddd solid;
+          border-radius: 100%;
+        }
+
+        :global(.left),
+        :global(.right) {
+          border: none;
+          width: 100%;
+          height: @cell-size;
+        }
+
+        :global(.date-selected) {
+          border: none;
+          background: #FFA900;
+          color: #fff;
+          font-size: @font-size-heading;
+        }
+
+        :global(.selected-start) {
+          border-radius: 100% 0 0 100%;
+        }
+
+        :global(.selected-single) {
+          border-radius: 100%;
+        }
+
+        :global(.selected-middle) {
+          border-radius: 0;
+        }
+
+        :global(.selected-end) {
+          border-radius: 0 100% 100% 0;
+        }
+      }
+
+      :global(.info) {
+        height: @font-size-icontext + 5;
+        width: 100%;
+        padding: 0 5 * 1px;
+        font-size: @font-size-icontext;
+        color: @color-text-caption;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      :global(.date-selected) {
+        color: #FFA900;
+      }
+    }
+  }
+
+  :global(.row) + :global(.row) {
+    margin-top: @v-spacing-sm;
+  }
+
+  :global(.row-xl) + :global(.row-xl) {
+    margin-top: @v-spacing-xl;
+  }
+}
+
+// ShortcutPanel
+.@{prefixClass} .shortcut-panel {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30 * 1px;
+  border-top: #ddd 1px solid;
+  height: @option-height;
+
+  .item {
+    display: inline-block;
+    color: @brand-primary;
+    font-size: 12px;
+  }
+}
+
+// :global(.tb-calendar){
+//   :global(.content) {
+//     height: calc(100% - 10.125rem);
+//     top: 10.125rem;
+//     position: fixed;
+//     display: flex;
+//     flex-direction: column;
+//     width: 100%;
+//     left: 0;
+//     z-index: 999;
+//     background: #fff;
+//   }
+//   :global(.animate){
+//     animation-duration: .3s;
+//     animation-fill-mode: both;
+//   }
+//   :global(.header){
+//     margin: 5px;
+//     display: flex;
+//     flex-shrink: 0;
+//     align-items: center;
+//     :global(.left){
+//       position: absolute;
+//       display: -ms-flexbox;
+//       display: flex;
+//       -ms-flex-pack: center;
+//       justify-content: center;
+//       -ms-flex-align: center;
+//       align-items: center;
+//       padding: 0 8px;
+//       height: 24px;
+//       left: 5px;
+//       top: 5px;
+//       color: #068EEF;
+//     }
+//     :global(.title){
+//       text-align: center;
+//       width: 100%;
+//       font-size: 16px;
+//       font-weight: bold;
+//     }
+//   }
+//   :global(.date-picker){
+//     display: -ms-flexbox;
+//     display: flex;
+//     -ms-flex-direction: column;
+//     flex-direction: column;
+//     background: #eee;
+//     :global(.wrapper){
+//       height: auto;
+//       position: relative;
+//     }
+//     :global(.load-tip){
+//       position: absolute;
+//       display: -ms-flexbox;
+//       display: flex;
+//       -ms-flex-pack: center;
+//       justify-content: center;
+//       -ms-flex-align: end;
+//       align-items: flex-end;
+//       left: 0;
+//       right: 0;
+//       padding: 10px 0;
+//       top: -40px;
+//       color: #bbb;
+//     }
+//     :global(.months){
+//       background: #fff;
+//     }
+//   }
+//   :global(.week-panel){
+//     background: #fff;
+//     display: -ms-flexbox;
+//     display: flex;
+//     -ms-flex-negative: 0;
+//     flex-shrink: 0;
+//     padding: 0 2px;
+//     border-bottom: 1PX #ddd solid;
+//     :global(.cell-grey){
+//       color: #bbb;
+//     }
+//     :global(.cell){
+//       height: 24px;
+//       display: -ms-flexbox;
+//       display: flex;
+//       width: 14.28571429%;
+//       -ms-flex-pack: center;
+//       justify-content: center;
+//       -ms-flex-align: center;
+//       align-items: center;
+//       color: #000;
+//       font-size: 14px;
+//     }
+//   }
+//   :global(.single-month){
+//     padding: 0;
+//     :global(.month-title){
+//       margin: 0;
+//       padding: 21px 0 6px 15px;
+//     }
+//     :global(.row){
+//       display: -ms-flexbox;
+//       display: flex;
+//       -ms-flex-align: baseline;
+//       align-items: baseline;
+//       // :global(& + .row){
+//       //   margin-top: 6px;
+//       // }
+//       :global(.cell){
+//         display: -ms-flexbox;
+//         display: flex;
+//         -ms-flex-direction: column;
+//         flex-direction: column;
+//         width: 14.28571429%;
+//         -ms-flex-pack: center;
+//         justify-content: center;
+//         -ms-flex-align: center;
+//         align-items: center;
+//         :global(.date-selected){
+//           color: #FFA900;
+//         }
+//         :global(.date-warpper){
+//           display: -ms-flexbox;
+//           display: flex;
+//           height: 35px;
+//           width: 100%;
+//           -ms-flex-pack: center;
+//           justify-content: center;
+//           -ms-flex-align: center;
+//           align-items: center;
+//           margin-bottom: 2px;
+//           :global(.left), :global(.right){
+//             border: none;
+//             width: 100%;
+//             height: 35px;
+//           }
+//           :global(.grey){
+//             color: #bbb;
+//           }
+//           :global(.date){
+//             display: -ms-flexbox;
+//             display: flex;
+//             -ms-flex-pack: center;
+//             justify-content: center;
+//             -ms-flex-align: center;
+//             align-items: center;
+//             width: 35px;
+//             height: 35px;
+//             -ms-flex-negative: 0;
+//             flex-shrink: 0;
+//             color: #000;
+//             font-size: 17px;
+//             font-weight: bold;
+//           }
+//           :global(.selected-start){
+//             border-radius: 100% 0 0 100%;
+//           }
+//           :global(.selected-middle){
+//             border-radius: 0;
+//           }
+//           :global(.selected-end){
+//             border-radius: 0 100% 100% 0;
+//           }
+//           :global(.date-selected){
+//             border: none;
+//             background: #FFA900;
+//             color: #fff;
+//             font-size: 17px;
+//           }
+//         }
+//         :global(.info){
+//           height: 15px;
+//           width: 100%;
+//           padding: 0 5px;
+//           font-size: 10px;
+//           color: #888;
+//           white-space: nowrap;
+//           text-overflow: ellipsis;
+//           overflow: hidden;
+//           text-align: center;
+//         }
+//       }
+//     }
+//   }
+// }

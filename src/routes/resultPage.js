@@ -1,5 +1,4 @@
 import React from 'react'
-import { routerRedux } from 'dva/router'
 import { connect } from 'dva'
 import { Button } from 'antd-mobile'
 import styles from '../assets/css/IndexPage.less'

@@ -1,5 +1,6 @@
 
 html, body, :global(#root) {
+  font-family: 'Helvetica Neue', 'avenir next';
   height: 100%;
 }
 

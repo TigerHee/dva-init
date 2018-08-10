@@ -1,5 +1,8 @@
-import request from '../utils/request';
+import axios from 'axios';
 
-export function query() {
-  return request('/api/users');
+export function ipInfo() {
+  return axios.get('https://ipinfo.compassflights.com');
+}
+export function query ({codes, lang = 'en'}) {
+  return axios.get(`/iatadatabase/query?codes=${codes}&lang=${lang}`)
 }

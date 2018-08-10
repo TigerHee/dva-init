@@ -1,6 +1,28 @@
-.a {
-  color: red;
-  .b{
-    color: blue;
+.animate-route{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #FEFEFE; 
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: fadeRoute;
+}
+
+@keyframes fadeRoute {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
+
+.menu{
+  font-size: 24px;
+  color: #363F54;
+}
+.searchBtn{
+  background:linear-gradient(-129.9deg,rgba(37,167,248,1),rgba(40,132,246,1));
+  box-shadow:0px 24px 24px -20px rgba(38,161,248,0.24);
+  border-radius: 1.75rem;
 }

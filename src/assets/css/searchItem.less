@@ -1,0 +1,111 @@
+.place{
+  height: 3.25rem;
+  border-bottom: 2px solid rgba(54,63,84,0.5);
+  font-size: 20px;
+  color: #A8ABB2;
+}
+.from{
+  flex: 1;
+  margin-bottom: 1rem;
+}
+.to{
+  flex: 1;
+  text-align: right;
+  margin-bottom: 1rem;
+}
+.exchange{
+  color: #25A1F7;
+  font-size: 26px;
+  height: 1.75rem;
+  width: 1.75rem;
+  line-height: 1.75rem;
+  border: 2px solid #25A1F7;
+  border-radius: 50%;
+  text-align: center;
+  align-self: center;
+}
+.modal{
+  position: absolute;
+  z-index: 99;
+  top: 100vh;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #FAFAFA;
+  transition: transform .3s;
+  transform: translate3d(0, 0, 0);
+}
+.close{
+  color: #363F54;
+  height: 3rem;
+  align-self: center;
+}
+.place-input{
+  background-color: #fff;
+  margin-top: 1px;
+  width: 100%;
+}
+.place-select{
+  font-size: 1rem;
+  background-color: #fff; 
+  flex: 1;
+  width: 100%;
+  overflow: auto;
+  padding: 0 0.9375rem;
+  padding-top: 1.5rem;
+  box-sizing: border-box;
+  color: #363F54;
+}
+.place-select-item{
+  margin-bottom: 2rem;
+}
+.selectBtn{
+  color: #757D8F;
+  height: 2rem;
+  line-height: 2rem;
+  font-size: 0.875rem;
+}
+.selected{
+  flex: 1;
+  margin-bottom: .5rem;
+}
+.selected-city{
+  font-size: 1.25rem;
+  font-family: 'AvenirNext-Medium';
+  color: #363F54;
+  margin-bottom: .3rem;
+}
+.selected-code{
+  font-size: 0.75rem;
+  color: #757D8F;
+}
+.selectedTo{
+  flex: 1;
+  margin-bottom: .5rem;
+  text-align: right;
+}
+.calendarHeader{
+  height: 6.625rem;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1rem;
+}
+.calendarClose{
+  font-size: 1.5rem;
+  color: #363F54;
+}
+.calendarHeaderDate{
+  display: flex;
+  justify-content: space-between;
+}
+.selectedDate{
+  color: #2884F6;
+}
+.calendarBtn{
+  width: 80%;
+  background:linear-gradient(-129.9deg,rgba(37,167,248,1),rgba(40,132,246,1));
+  box-shadow:0px 24px 24px -20px rgba(38,161,248,0.24);
+  border-radius:28px;
+}
