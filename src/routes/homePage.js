@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'dva'
 import { Button, Flex, WingBlank, WhiteSpace } from 'antd-mobile'
-import Title from '../components/title'
 import Place from '../components/place'
 import CalendarSelect from '../components/calendarSelect'
 import styles from '../assets/css/home.less'
@@ -38,7 +37,6 @@ class homePage extends React.Component {
     return (
       <div className={styles['animate-route']}>
         {/* navbar */}
-        <Title name="Home" onClose={this.closeModule}></Title>
         <WhiteSpace />
         <WingBlank style={{ flex: 1 }}>
           {/* menu */}

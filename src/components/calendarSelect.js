@@ -80,20 +80,8 @@ class CalendarSelect extends React.Component {
         returnDate: this.state.return
       }
     })
-    let depart = this.state.depart
-    let Return = this.state.return
-    let type = this.state.return === '' ? 1 : 2
-    let from = `C${this.props.fromCityAirport.airports[this.props.fromCityAirport.selectIndex].code}`
-    let to = `C${this.props.toCityAirport.airports[this.props.toCityAirport.selectIndex].code}`
-    let outBoundDate = depart.getFullYear().toString() + (depart.getMonth() + 1).toString() + depart.getDate().toString()
-    let returnDate = Return.getFullYear().toString() + (Return.getMonth() + 1).toString() + Return.getDate().toString()
-    let search = `?num=1,0,0,E&type=${type}&Outbound=${from}-${outBoundDate}-${to}`
-    if (type === 2) {
-      search += `&Return=${to}-${returnDate}-${from}`
-    }
     this.props.dispatch(
       routerRedux.push({
-        search,
         pathname: '/result',
       })
     )

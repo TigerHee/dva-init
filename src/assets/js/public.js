@@ -83,5 +83,6 @@ class dateFormat {
 }
 
 export {
-  dateFormat
+  dateFormat,
+  preFixInt
 }

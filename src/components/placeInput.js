@@ -13,7 +13,6 @@ class PlaceInput extends React.Component {
     this.state = {
       show: props.show,
       showDefault: true,
-      height: '',
       value: '',
       cities: []
     }
@@ -29,10 +28,6 @@ class PlaceInput extends React.Component {
   }
   // 第一次渲染完成调用
   componentDidMount() {
-    let translateY = (document.body.clientHeight - document.querySelector('.navBar').clientHeight) + 'px'
-    this.setState({
-      height: `${translateY}`
-    })
   }
   closePopup() {
     this.props.onClose()
@@ -73,7 +68,7 @@ class PlaceInput extends React.Component {
       <Flex
         direction="column"
         justify="start"
-        style={this.state.show ? { transform: `translateY(-100%)`, height: this.state.height } : { transform: 'translateY(0)', height: this.state.height }}
+        style={this.state.show ? { transform: `translateY(-100%)` } : { transform: 'translateY(0)' }}
         className={styles.modal}>
         {/* input */}
         <div className={styles['place-input']}>
