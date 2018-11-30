@@ -213,7 +213,7 @@ dva 提供多个 effect 函数内部的处理函数，比较常用的是 call �
 }
 // components event
 props.dispatch({
-    type: 'add/updateState',
+    type: 'app/updateState',
     payload: {
         locale: 'fr'
     }
