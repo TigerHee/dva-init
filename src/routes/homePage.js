@@ -39,10 +39,6 @@ class homePage extends React.Component {
         {/* navbar */}
         <WhiteSpace />
         <WingBlank style={{ flex: 1 }}>
-          {/* menu */}
-          <Flex justify="end">
-            <span className={`${styles.menu} iconfont icon-outline-menu-px`}></span>
-          </Flex>
           <WhiteSpace size="xl" />
           {/* logo */}
           <Flex justify="center">
@@ -55,11 +51,17 @@ class homePage extends React.Component {
           {/* 日历选择 */}
           <CalendarSelect></CalendarSelect>
           <WhiteSpace size="xl" />
-          <Button onClick={() => {
-            this.props.dispatch(
-              routerRedux.push({ pathname: 'result' })
-            )
-          }} type="primary" className={styles.searchBtn}>Search</Button>
+          <Button
+            onClick={() => {
+              this.props.dispatch(
+                routerRedux.push({ pathname: 'result' })
+              )
+            }}
+            type="primary"
+            className={styles.searchBtn}
+          >
+            Search
+          </Button>
         </WingBlank>
       </div>
     )

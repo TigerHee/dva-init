@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'dva'
 import { Flex, WingBlank, WhiteSpace, InputItem } from 'antd-mobile'
-
+import HeaderCom from './common/headerCom'
 import PlaceSelectDefault from '../components/placeSelectDefault'
 import PlaceSelect from '../components/placeSelect'
 import styles from '../assets/css/searchItem.less'
@@ -17,6 +17,7 @@ class PlaceInput extends React.Component {
       cities: []
     }
     this.inputChange = this.inputChange.bind(this)
+    this.closePopup = this.closePopup.bind(this)
   }
   // props 更新时调用
   UNSAFE_componentWillReceiveProps(nextState) {
@@ -73,9 +74,7 @@ class PlaceInput extends React.Component {
         {/* input */}
         <div className={styles['place-input']}>
           <WingBlank>
-            <Flex justify="start" className={styles.close}>
-              <span className="icon-outline-close-px iconfont" style={{ fontSize: '24px' }} onClick={() => this.closePopup()}></span>
-            </Flex>
+            <HeaderCom callbackLeft={this.closePopup} titleText={'Select place'}></HeaderCom>
             <InputItem
               placeholder={placeholder}
               clear

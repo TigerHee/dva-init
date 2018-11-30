@@ -5,6 +5,7 @@ import { Flex, Calendar, WhiteSpace, Button } from 'antd-mobile';
 import { dateFormat } from '../assets/js/public'
 import enUS from 'antd-mobile/lib/calendar/locale/en_US';
 import styles from '../assets/css/searchItem.less'
+import HeaderCom from './common/headerCom'
 require('../assets/css/calendar.less')
 
 class CalendarSelect extends React.Component {
@@ -17,15 +18,21 @@ class CalendarSelect extends React.Component {
     }
     this.header = this.header.bind(this)
     this.selectDate = this.selectDate.bind(this)
+    this.closeCalendar = this.closeCalendar.bind(this)
   }
   showCalendar() {
     this.setState({
       calendarShow: true
     })
   }
-  closeCalendar() {
+  closeCalendar(event) {
+    event = event || window.event;
+    event.stopPropagation();
+    event.preventDefault();
     this.setState({
       calendarShow: false
+    }, () => {
+      console.log(this.state.calendarShow)
     })
   }
   getDateExtra() {
@@ -35,7 +42,7 @@ class CalendarSelect extends React.Component {
     return (
       <div>
         <div className={styles.calendarHeader}>
-          <span onClick={() => { this.closeCalendar() }} className={`icon-outline-close-px iconfont ${styles.calendarClose}`}></span>
+          <HeaderCom callbackLeft={this.closeCalendar} titleText={'Select time'}></HeaderCom>
           <p className={styles.calendarHeaderDate}>
             {
               (() => {
@@ -91,12 +98,14 @@ class CalendarSelect extends React.Component {
     return (
       <Flex justify="between" align="end" className={styles.place} onClick={() => { this.showCalendar() }}>
         <div className={styles.from}>Depart Date</div>
-        <div style={{ alignSelf: 'center' }}>—</div>
+        <div style={{ alignSelf: 'center' }}>
+          <span className={`${styles.exchange} iconfont icon-riqi`}></span>
+        </div>
         <div className={styles.to}>Return Date</div>
         <Calendar
           renderHeader={this.header}
           prefixCls="tb-calendar"
-          onCancel={() => { this.closeCalendar() }}
+          // onCancel={() => { this.closeCalendar() }}
           locale={enUS}
           defaultDate={now}
           visible={this.state.calendarShow}

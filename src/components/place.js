@@ -44,7 +44,7 @@ class Place extends React.Component {
           })()
         }
         {/* exchange from and to */}
-        <span className={`${styles.exchange} iconfont icon-outline-swap_horiz-`}></span>
+        <span className={`${styles.exchange} iconfont icon-return`}></span>
         {/* to */}
         {
           (() => {
