@@ -3,20 +3,20 @@ import { connect } from 'dva'
 import styles from '../assets/css/searchItem.less'
 
 class PlaceSelect extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       cities: props.cities
     }
   }
   // props 更新时调用
-  UNSAFE_componentWillReceiveProps (nextState) {
+  UNSAFE_componentWillReceiveProps(nextState) {
     // TODO: 判断cities是否相等
     this.setState({
       cities: nextState.cities
     })
   }
-  selectAirport (city, index) {
+  selectAirport(city, index) {
     city.selectIndex = index
     let key = this.props.name === 'from' ? 'fromCityAirport' : 'toCityAirport'
     this.props.dispatch({
@@ -27,7 +27,7 @@ class PlaceSelect extends React.Component {
     })
     this.props.onClose()
   }
-  render () {
+  render() {
     return (
       <div className={`${styles['place-select']}`}>
         {
@@ -41,7 +41,7 @@ class PlaceSelect extends React.Component {
                 {
                   city.airports.map((airport, index) => {
                     return (
-                      <p onClick={() => {this.selectAirport(city, index)}} key={airport.code} style={{padding: '0 1.25rem', lineHeight: '2rem'}}>
+                      <p onClick={() => { this.selectAirport(city, index) }} key={airport.code} style={{ padding: '0 1.25rem', lineHeight: '2rem' }}>
                         <span className="icon-round-location_on- iconfont"></span>
                         <span>{airport.code}, {airport.name}</span>
                       </p>
@@ -57,7 +57,7 @@ class PlaceSelect extends React.Component {
   }
 }
 
-function mapStateToProps ({ app }) {
+function mapStateToProps({ app }) {
   return {
     ipInfo: app.ipInfo,
   }

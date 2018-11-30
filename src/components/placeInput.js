@@ -8,7 +8,7 @@ import styles from '../assets/css/searchItem.less'
 import { query } from '../services/service'
 
 class PlaceInput extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       show: props.show,
@@ -20,7 +20,7 @@ class PlaceInput extends React.Component {
     this.inputChange = this.inputChange.bind(this)
   }
   // props 更新时调用
-  UNSAFE_componentWillReceiveProps (nextState) {
+  UNSAFE_componentWillReceiveProps(nextState) {
     if (nextState.show !== this.state.show) {
       this.setState({
         show: nextState.show
@@ -28,16 +28,16 @@ class PlaceInput extends React.Component {
     }
   }
   // 第一次渲染完成调用
-  componentDidMount () {
+  componentDidMount() {
     let translateY = (document.body.clientHeight - document.querySelector('.navBar').clientHeight) + 'px'
     this.setState({
       height: `${translateY}`
     })
   }
-  closePopup () {
+  closePopup() {
     this.props.onClose()
   }
-  inputChange (val) {
+  inputChange(val) {
     // 输入内容长度大于3搜索
     if (val.length >= 3) {
       query({
@@ -66,30 +66,30 @@ class PlaceInput extends React.Component {
       showDefault: val === '' ? true : false
     })
   }
-  render () {
+  render() {
     let placeholder = this.props.name === 'from' ? 'From City or Airport' : 'To City or Airport';
-    let Select = this.state.showDefault ? <PlaceSelectDefault name={this.props.name}/> : <PlaceSelect name={this.props.name} cities={this.state.cities} onClose={() => {this.closePopup()}}/>
+    let Select = this.state.showDefault ? <PlaceSelectDefault name={this.props.name} /> : <PlaceSelect name={this.props.name} cities={this.state.cities} onClose={() => { this.closePopup() }} />
     return (
       <Flex
         direction="column"
         justify="start"
-        style={this.state.show ? {transform: `translateY(-100%)`, height: this.state.height} : {transform: 'translateY(0)', height: this.state.height}}
+        style={this.state.show ? { transform: `translateY(-100%)`, height: this.state.height } : { transform: 'translateY(0)', height: this.state.height }}
         className={styles.modal}>
         {/* input */}
         <div className={styles['place-input']}>
           <WingBlank>
             <Flex justify="start" className={styles.close}>
-              <span className="icon-outline-close-px iconfont" style={{fontSize: '24px'}} onClick={() => this.closePopup()}></span>
+              <span className="icon-outline-close-px iconfont" style={{ fontSize: '24px' }} onClick={() => this.closePopup()}></span>
             </Flex>
             <InputItem
               placeholder={placeholder}
               clear
               value={this.state.value}
               onChange={this.inputChange}
-              />
+            />
           </WingBlank>
         </div>
-        <WhiteSpace/>
+        <WhiteSpace />
         {/* select area */}
         {Select}
       </Flex>
@@ -97,7 +97,7 @@ class PlaceInput extends React.Component {
   }
 }
 
-function mapStateToProps ({ app }) {
+function mapStateToProps({ app }) {
   return {
     ipInfo: app.ipInfo,
   }

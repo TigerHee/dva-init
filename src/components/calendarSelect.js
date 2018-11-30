@@ -8,7 +8,7 @@ import styles from '../assets/css/searchItem.less'
 require('../assets/css/calendar.less')
 
 class CalendarSelect extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       calendarShow: false,
@@ -18,24 +18,24 @@ class CalendarSelect extends React.Component {
     this.header = this.header.bind(this)
     this.selectDate = this.selectDate.bind(this)
   }
-  showCalendar () {
+  showCalendar() {
     this.setState({
       calendarShow: true
     })
   }
-  closeCalendar () {
+  closeCalendar() {
     this.setState({
       calendarShow: false
     })
   }
-  getDateExtra () {
-    return {'2018/08/11': { info: 'Depart'}}
+  getDateExtra() {
+    return { '2018/08/11': { info: 'Depart' } }
   }
-  header () {
+  header() {
     return (
       <div>
         <div className={styles.calendarHeader}>
-          <span onClick={() => {this.closeCalendar()}} className={`icon-outline-close-px iconfont ${styles.calendarClose}`}></span>
+          <span onClick={() => { this.closeCalendar() }} className={`icon-outline-close-px iconfont ${styles.calendarClose}`}></span>
           <p className={styles.calendarHeaderDate}>
             {
               (() => {
@@ -57,11 +57,11 @@ class CalendarSelect extends React.Component {
             }
           </p>
         </div>
-        <WhiteSpace style={{background: '#fafafa'}}/>
+        <WhiteSpace style={{ background: '#fafafa' }} />
       </div>
     )
   }
-  selectDate (date) {
+  selectDate(date) {
     if (this.state.depart === '') {
       this.setState({
         depart: date
@@ -72,7 +72,7 @@ class CalendarSelect extends React.Component {
       })
     }
   }
-  goResult () {
+  goResult() {
     this.props.dispatch({
       type: 'app/updateState',
       payload: {
@@ -98,30 +98,30 @@ class CalendarSelect extends React.Component {
       })
     )
   }
-  render () {
+  render() {
     let now = new Date()
     return (
-      <Flex justify="between" align="end" className={styles.place} onClick={() => {this.showCalendar()}}>
+      <Flex justify="between" align="end" className={styles.place} onClick={() => { this.showCalendar() }}>
         <div className={styles.from}>Depart Date</div>
-        <div style={{alignSelf: 'center'}}>—</div>
+        <div style={{ alignSelf: 'center' }}>—</div>
         <div className={styles.to}>Return Date</div>
-        <Calendar 
+        <Calendar
           renderHeader={this.header}
           prefixCls="tb-calendar"
-          onCancel={() => {this.closeCalendar()}}
-          locale={enUS} 
+          onCancel={() => { this.closeCalendar() }}
+          locale={enUS}
           defaultDate={now}
-          visible={this.state.calendarShow} 
+          visible={this.state.calendarShow}
           onSelect={this.selectDate}
           // getDateExtra={this.getDateExtra}
           minDate={now}
-          maxDate={new Date(+now + 1000 * 60 * 60 * 24 * 350)}/>
+          maxDate={new Date(+now + 1000 * 60 * 60 * 24 * 350)} />
         {
           (() => {
             if (this.state.calendarShow) {
               return (
-                <div style={{position: 'fixed',bottom: '1rem', zIndex: '1000', width: '100%', left: '0', display: 'flex', justifyContent: 'center'}}>
-                  <Button className={styles.calendarBtn} onClick={() => {this.goResult()}} type="primary">Search</Button>
+                <div style={{ position: 'fixed', bottom: '1rem', zIndex: '1000', width: '100%', left: '0', display: 'flex', justifyContent: 'center' }}>
+                  <Button className={styles.calendarBtn} onClick={() => { this.goResult() }} type="primary">Search</Button>
                 </div>
               )
             }
@@ -131,7 +131,7 @@ class CalendarSelect extends React.Component {
     )
   }
 }
-function mapStateToProps ({ app }) {
+function mapStateToProps({ app }) {
   return {
     fromCityAirport: app.fromCityAirport,
     toCityAirport: app.toCityAirport
