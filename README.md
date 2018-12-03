@@ -21,7 +21,7 @@ npm run build
 ***
 
 ### 插件使用
-> 1. polished (css-in-js 常用css代码块)
+> 1. polished (css-in-js css modules)
 > 2. react-loadable (可用于骨架屏loading)
 
 ***
@@ -29,6 +29,7 @@ npm run build
 ### vs-code 推荐插件
 > 1. auto close tag （自动闭合html标签）
 > 2. auto rename tag (自动修改html标签名)
+> 3. Bracket Pair Colorizer 2 (代码括号嵌套颜色区分)
 
 ***
 
@@ -46,7 +47,6 @@ npm run build
 
 ##### 一. 函数式定义的 无状态组件
 ```javascript
-// demo
 function HelloComponent (props) {
     return <div>hello {props.name}</div>
 }
@@ -61,7 +61,6 @@ tips: 只要有可能，尽量使用无状态组件
 
 ##### 二. React.createClass (不推荐)
 ```javascript
-// demo
 var input = React.createClass({
     propTypes: { // 定义传入props中的属性各种类型
         initialValue: React.propTypes.string
@@ -93,13 +92,12 @@ var input = React.createClass({
 > 1. 要被实例化，拥有生命周期
 > 2. 有状态的
 
-问题：
+缺点：
 > 1. React.createClass会自绑定函数方法（不像React.Component只绑定需要关心的函数）导致不必要的性能开销，增加代码过时的可能性。
 > 2. React.createClass的mixins不够自然、直观；React.Component形式非常适合高阶组件（Higher Order Components--HOC）,它以更直观的形式展示了比mixins更强大的功能，并且HOC是纯净的JavaScript，不用担心他们会被废弃
 
 ##### 三. React.Component (有状态组件推荐方式)
 ```javascript
-// demo
 class input extends React.Component{
     constructor (props) {
         super(props);
@@ -131,9 +129,9 @@ input.defaultProps = {
 }
 ```
 区别：
-> 函数this绑定
-  createClass中this自动绑定
-  component中不会自动绑定：三种方式绑定
+> 函数this绑定：
+> createClass中this自动绑定，
+> component中不会自动绑定：三种方式绑定
   ```javascript
   // 方式一：构造函数中绑定this
   consutructor (props) {
@@ -163,8 +161,10 @@ import { Link } from 'dva/router'
         id: 32
     }
 }}></Link>
+
 // 方式2: props.history (不推荐)
 props.history.push('/result')
+
 // 方式3: routerRedux
 props.dispatch(
     routerRedux.push(
@@ -214,7 +214,6 @@ dva 提供多个 effect 函数内部的处理函数，比较常用的是 call �
 
 通过dispath (被 connect 的 Component 会自动在 props 中拥有 dispatch 方法)
 ```javascript
-// demo
 // model
 {
     namespace: 'app',
