@@ -185,12 +185,12 @@ props.dispatch(
 
 ***
 
-### Redux/Model
+### Redux与Dva Model 数据流：
 
-数据流:
+Redux:
 ![数据流][1]
 
-
+Dva Model:
 ![数据流2][2]
 
 ##### Model 对象的属性
