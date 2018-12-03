@@ -1,4 +1,17 @@
 ﻿
+ ## Build Setup
+
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:3000
+npm start
+
+# build for production with minification
+npm run build
+
+```
 -------
 ### 技术选型
 > 1. 基础框架：react
