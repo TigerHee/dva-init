@@ -13,27 +13,27 @@ npm run build
 
 ```
 -------
-### 技术选型
+### 技术选型：
 > 1. 基础框架：react
 > 2. UI库：antd-mobile
 > 3. 脚手架：dva
 
 ***
 
-### 插件使用
+### 插件使用：
 > 1. polished (css-in-js css modules)
 > 2. react-loadable (可用于骨架屏loading)
 
 ***
 
-### vs-code 推荐插件
+### vs-code 推荐插件：
 > 1. auto close tag （自动闭合html标签）
 > 2. auto rename tag (自动修改html标签名)
 > 3. Bracket Pair Colorizer 2 (代码括号嵌套颜色区分)
 
 ***
 
-### vs-code 配置修改
+### vs-code 配置修改：
 ```javascript
 "emmet.includeLanguages": {
     "javascript": "javascriptreact"
@@ -43,7 +43,7 @@ npm run build
 
 ***
 
-### 创建组件的几种方式
+### 创建组件的几种方式：
 
 ##### 一. 函数式定义的 无状态组件
 ```javascript
@@ -146,7 +146,7 @@ input.defaultProps = {
 
 ***
 
-### 路由跳转
+### 路由跳转：
 ```javascript
 /*
  *  跳转
@@ -191,7 +191,7 @@ props.dispatch(
 
 ![数据流2][2]
 
-##### Model 对象的属性
+##### Model 核心概念：
 
 > 1. namespace: 当前 Model 的名称。整个应用的 State，由多个小的 Model 的 State 以 namespace 为 key 合成
 > 2. state: 该 Model 当前的状态。数据保存在这里，直接决定了视图层的输出
@@ -204,14 +204,15 @@ dva 提供多个 effect 函数内部的处理函数，比较常用的是 call �
 > call：执行异步函数
 > put：发出一个 Action，类似于 dispatch
 
-##### 取state的值
+##### 获取state的值：
 
 通过connect mapStateToProps函数将需要用到的数据合并到props中，再在组件中取
 
-##### 修改state的值
+##### 修改state的值：
 
 通过dispath (被 connect 的 Component 会自动在 props 中拥有 dispatch 方法)
 ```javascript
+// 用法举例：
 // model
 {
     namespace: 'app',
@@ -221,6 +222,7 @@ dva 提供多个 effect 函数内部的处理函数，比较常用的是 call �
         }
     }
 }
+
 // components event
 props.dispatch({
     type: 'app/updateState',
@@ -232,7 +234,7 @@ props.dispatch({
 
 ***
 
-### http请求
+### http请求：
 
 统一讲用到所有的接口放到src/services/service.js中(方便管理/函数柯里化)
 
