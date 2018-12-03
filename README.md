@@ -185,12 +185,10 @@ props.dispatch(
 
 ***
 
-### Redux与Dva Model 数据流：
+### Dva Model 数据流：
 
-Redux:
 ![数据流][1]
 
-Dva Model:
 ![数据流2][2]
 
 ##### Model 对象的属性
@@ -238,5 +236,5 @@ props.dispatch({
 
 统一讲用到所有的接口放到src/services/service.js中(方便管理/函数柯里化)
 
-  [1]: https://zos.alipayobjects.com/rmsportal/cyzvnIrRhJGOiLliwhcZ.png
+  [1]: https://zos.alipayobjects.com/rmsportal/PPrerEAKbIoDZYr.png
   [2]: https://zos.alipayobjects.com/rmsportal/pHTYrKJxQHPyJGAYOzMu.png
