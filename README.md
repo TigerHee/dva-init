@@ -23,6 +23,8 @@ npm run build
 ### 插件使用：
 > 1. polished (css-in-js css modules)
 > 2. react-loadable (可用于骨架屏loading)
+> 3. react-intl (多语言，多货币)
+> 4. lodash (工具包 类似于underscore)
 
 ***
 
